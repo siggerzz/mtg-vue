@@ -1,0 +1,14 @@
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\bin\Debug\netcoreapp2.1\MagicApi.deps.json
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\bin\Debug\netcoreapp2.1\MagicApi.runtimeconfig.json
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\bin\Debug\netcoreapp2.1\MagicApi.runtimeconfig.dev.json
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\bin\Debug\netcoreapp2.1\MagicApi.dll
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\bin\Debug\netcoreapp2.1\MagicApi.pdb
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\obj\Debug\netcoreapp2.1\MagicApi.csproj.CoreCompileInputs.cache
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\obj\Debug\netcoreapp2.1\MagicApi.RazorAssemblyInfo.cache
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\obj\Debug\netcoreapp2.1\MagicApi.RazorAssemblyInfo.cs
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\obj\Debug\netcoreapp2.1\MagicApi.AssemblyInfoInputs.cache
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\obj\Debug\netcoreapp2.1\MagicApi.AssemblyInfo.cs
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\obj\Debug\netcoreapp2.1\MagicApi.RazorTargetAssemblyInfo.cache
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\obj\Debug\netcoreapp2.1\MagicApi.dll
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\obj\Debug\netcoreapp2.1\MagicApi.pdb
+C:\Users\ben.siggery\source\repos\MagicApi\MagicApi\obj\Debug\netcoreapp2.1\MagicApi.csprojAssemblyReference.cache
