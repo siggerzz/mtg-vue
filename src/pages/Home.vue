@@ -1,15 +1,14 @@
 <template>
-  <div id="app">
-    <SearchComponent class="search-container"/>
-    <Layout/>
-  </div>
+<div class="search-container">
+    <SearchComponent/>
+</div>
 </template>
 
 <script>
 import SearchComponent from '../components/SearchComponent';
 
 export default {
-  name: 'home',
+  name: 'HomePage',
   components: {
     SearchComponent
   }

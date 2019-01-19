@@ -1,15 +1,26 @@
 <template>
 <div class="search-box">
-    <form>
+    <form @submit.prevent="handleSubmit">
         <input class="search-input" type="text" autocomplete="off" placeholder="Search term">
-        <input class="search-button" type="submit">
-        </form>
+        <input class="search-button" type="submit" @click.stop.prevent="submit()">
+    </form>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'SearchBoxComponent'
+    name: 'SearchBoxComponent',
+    data(){
+      return {
+        foobar : null
+      }
+    },
+    methods: {
+      submit(){
+         //if you want to send any data into server before redirection then you can do it here
+        this.$router.push("/search-results");
+      }
+    }
     
 }
 </script>

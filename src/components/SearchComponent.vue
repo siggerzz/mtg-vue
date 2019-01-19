@@ -1,5 +1,5 @@
 <template>
-<div class>
+<div>
   <SearchBoxComponent/>
   <div class="search-by-container">
       <SearchCardComponent class="search-card-component"/>

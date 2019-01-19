@@ -8,9 +8,7 @@
 <script>
 
 export default {
-  name: 'header',
-  components: {
-  }
+  name: 'HeaderComponent'
 }
 </script>
 
