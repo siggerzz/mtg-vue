@@ -28,10 +28,14 @@ export default {
 <style lang="scss">
 .search-input {
   background-color: #c2c2c2;
-  color:black;
-  height: 30px;
-  font-size: 20px;
+  height: 27px;
   font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+  color: #4c4b4b;
+  padding: 0px;
+  border: 0px;
+  padding-left: 5px;
 }
 
   .search-input {
@@ -39,9 +43,11 @@ export default {
   }
 
   .search-button {
-    border: 0px none;
-    background: black;
+    background: #434343;
+    font-weight: bold;
+    border: #191919 solid 1px;
     color: white;
+    height: 29px;
   }
 
 @media only screen and (min-width: 750px) {
@@ -51,8 +57,11 @@ export default {
   }
   
   .search-button {
-    height: 36px;
-    margin-left:10px;
+    height: 29px;
+    font-size: 12pt;
+    width: 14%;
+    position: relative;
+    left: 2px;
   }
 }
 
@@ -63,9 +72,10 @@ export default {
     margin: 0 auto;
   }
   .search-button {
+    font-size: 20pt;
     margin-top:10px;
     height:36px;
-    width: 90%;
+    width: 91%;
   }
 }
 </style>

@@ -5,9 +5,7 @@
       <SearchCardComponent class="search-card-component"/>
       <SearchColourComponent class="search-colour-component"/>
   </div>
-  <div class="filter-by-container">
-        <FilterByComponent class="filter-by-component"/>
-  </div>
+    <FilterByComponent class="filter-by-component"/>
 </div>
 </template>
 
@@ -32,8 +30,9 @@ export default {
 <style lang="scss" scoped>
 
 @media screen and (max-width: 750px) {
-  .search-by-container {
-    width: 100%;
+    .search-by-container {
+    width: 90%;
+    margin: 0 auto;
     display: block;
     text-align: center;
   }
@@ -45,7 +44,6 @@ export default {
     width:60%;
     display:inline-grid;
   }
-
   .search-by-container {
     text-align:left;
     width:60%;

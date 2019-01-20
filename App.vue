@@ -18,11 +18,15 @@ export default {
 </script>
 
 <style lang="scss">
+
+body {
+  margin:0px;
+}
 .container {
   margin: 0 auto;
 
   @media only screen and (min-width: 750px) {
-    width:650px;
+    width:750px;
   }
 }
 
@@ -38,6 +42,8 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-family: 'Open Sans';
+  font-size: 10pt;
 }
 
 .checkbox-container input {

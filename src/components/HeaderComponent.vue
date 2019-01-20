@@ -1,7 +1,13 @@
 <template>
   <div id="header">
-    <img class="logo" alt="MTG Logo" src="../assets/mtg-logo.png">
-    <h1>Welcome to the MTG Card Search Vue app!</h1>
+    <div class="bannerBackground">
+        <div class="bannerContainer">
+          <img class="bannerImage" alt="MTG Logo" src="../assets/header/topbanner.png">
+        </div>
+        <a href="/">
+            <img src="../assets/mtg-logo.png">
+        </a>
+    </div>
   </div>
 </template>
 
@@ -23,10 +29,35 @@ body {
   color: #ffffff;
 }
 
-.logo {
-  height:100px;
+.bannerBackground a {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 475px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 275px;
 }
-#header {
-  margin-top: 20px;
+
+.bannerBackground a img {
+    width: 100%;
+}
+
+
+
+@media only screen and (max-width: 750px) {
+  .bannerImage {
+    display: none;
+  }
+
+  .bannerBackground {
+    height: 100px;
+  }
+}
+
+@media screen and (min-width: 750px){
+  .bannerBackground {
+    background-color: #191919;
+  }
 }
 </style>
