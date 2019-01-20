@@ -2,7 +2,7 @@
 <div class="search-box">
     <form @submit.prevent="handleSubmit">
         <input class="search-input" type="text" autocomplete="off" placeholder="Search terms...">
-        <input class="search-button" type="submit" @click.stop.prevent="submit()">
+        <input class="search-button" value="SEARCH" type="submit" @click.stop.prevent="submit()">
     </form>
   </div>
 </template>
@@ -38,9 +38,21 @@ export default {
       width:90%;
   }
 
+  .search-button {
+    border: 0px none;
+    background: black;
+    color: white;
+  }
+
 @media only screen and (min-width: 750px) {
+  .search-input {
+    display: inline-block;
+    width:85%;
+  }
+  
   .search-button {
     height: 36px;
+    margin-left:10px;
   }
 }
 
@@ -51,6 +63,7 @@ export default {
     margin: 0 auto;
   }
   .search-button {
+    margin-top:10px;
     height:36px;
     width: 90%;
   }

@@ -1,9 +1,20 @@
 <template>
 <div class="search-card">
     <h3>Search Card:</h3>
-    <p class="card-type first"><input name="name" type="checkbox">Name</p>
-    <p class="card-type"><input name="types" type="checkbox">Types</p>
-    <p class="card-type"><input name="text" type="checkbox">Text</p>
+    <div>
+        <label class="checkbox-container">Name
+            <input name="name" type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkbox-container">Types
+            <input name="types" type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkbox-container">Text
+            <input name="text" type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+    </div>
 </div>
 </template>
 
@@ -15,12 +26,5 @@ export default {
 
 <style lang="scss" scoped>
 
-.card-type{
-    display:inline-block;
-    padding-left:20px;
-}
 
-.search-card .first {
-    padding-left:0px;
-}
 </style>
