@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import SearchBoxComponent from './search/SearchBoxComponent';
-import SearchCardComponent from './search/SearchCardComponent';
-import SearchColourComponent from './search/SearchColourComponent';
-import FilterByComponent from './search/FilterByComponent';
+import SearchBoxComponent from './search/SearchBoxComponent.vue';
+import SearchCardComponent from './search/SearchCardComponent.vue';
+import SearchColourComponent from './search/SearchColourComponent.vue';
+import FilterByComponent from './search/FilterByComponent.vue';
 
 export default {
   name: 'SearchComponent',
@@ -29,16 +29,33 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
 
-.search-by-container {
-  text-align:left;
-  width:60%;
-  display:inline-grid;
+@media screen and (max-width: 750px) {
+  .search-by-container {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
 }
 
-.filter-by-container {
-  display:inline-grid;
-  width:40%;
+@media only screen and (min-width: 750px) {
+  .search-by-container {
+    text-align:left;
+    width:60%;
+    display:inline-grid;
+  }
+
+  .search-by-container {
+    text-align:left;
+    width:60%;
+    display:inline-grid;
 }
+
+  .filter-by-container {
+    display:inline-grid;
+    width:40%;
+  }
+}
+
 </style>

@@ -7,7 +7,7 @@
 
 <script>
 
-import HeaderComponent from './src/components/HeaderComponent';
+import HeaderComponent from './src/components/HeaderComponent.vue';
 
 export default {
   name:'app',
@@ -16,3 +16,13 @@ export default {
   } 
 }
 </script>
+
+<style lang="scss">
+.container {
+  margin: 0 auto;
+
+  @media only screen and (min-width: 750px) {
+    width:650px;
+  }
+}
+</style>

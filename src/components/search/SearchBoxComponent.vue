@@ -1,10 +1,10 @@
 <template>
 <div class="search-box">
     <form @submit.prevent="handleSubmit">
-        <input class="search-input" type="text" autocomplete="off" placeholder="Search term">
+        <input class="search-input" type="text" autocomplete="off" placeholder="Search terms...">
         <input class="search-button" type="submit" @click.stop.prevent="submit()">
     </form>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -25,10 +25,34 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .search-input {
-  width:100%;
   background-color: #c2c2c2;
   color:black;
+  height: 30px;
+  font-size: 20px;
+  font-style: italic;
+}
+
+  .search-input {
+      width:90%;
+  }
+
+@media only screen and (min-width: 750px) {
+  .search-button {
+    height: 36px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+
+  .search-input {
+    display: block;
+    margin: 0 auto;
+  }
+  .search-button {
+    height:36px;
+    width: 90%;
+  }
 }
 </style>

@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
 import App from '../App.vue';
-import HomePage from './pages/Home';
-import SearchResultsPage from './pages/SearchResults';
+import HomePage from './views/Home.vue';
+import SearchResultsPage from './views/SearchResults.vue';
 
 Vue.use(VueRouter);
+
 
 const routes = [
   { path: '/', component: HomePage },
@@ -15,7 +16,7 @@ const router = new VueRouter({
   routes
 })
 
-const app = new Vue({
+new Vue({
   el: '#app',
   router,
   components: { App },
