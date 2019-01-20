@@ -10,8 +10,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace MagicApi
 {
@@ -27,8 +25,20 @@ namespace MagicApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddHttpClient<ICardsService, CardsService>();
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        services.AddHttpClient<ICardsService, CardsService>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CORS", corsPolicyBuilder => corsPolicyBuilder.AllowAnyOrigin()
+                    // Apply CORS policy for any type of origin  
+                    .AllowAnyMethod()
+                    // Apply CORS policy for any type of http methods  
+                    .AllowAnyHeader()
+                    // Apply CORS policy for any headers  
+                    .AllowCredentials());
+                // Apply CORS policy for all users  
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +54,7 @@ namespace MagicApi
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("CORS");
             app.UseMvc();
         }
     }

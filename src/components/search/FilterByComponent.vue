@@ -60,10 +60,6 @@ h3 {
     overflow: hidden;
 }
 
-.select-style::before {
-    background: #fafafa url("../../assets/Arrow_down.png") no-repeat 90% 50%;
-}
-
 .select-style select {
     width:100%;
     height: 31px;
