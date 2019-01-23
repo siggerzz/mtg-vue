@@ -1,28 +1,26 @@
 <template>
 <table>
     <tbody>
-        <tr class="standard-card-item">
+        <tr class="standard-card-item" v-for="(card, index) in cardsResponse" :key=index>
             <td class="leftCol">
                 <a href="/card">
-                    <img class="cardImage" src="../../assets/search-results/card/Card.jpg"/>
+                    <img class="cardImage" :srcset="card.imageUrl"/>
                     </a>
             </td>
             <td class="middleCol">
                 <div class="cardInfo">
-                    <span class="cardTitle"><a href="/card">Test</a></span>
+                    <span class="cardTitle" ><a href="/card">{{card.name}}</a></span>
                     <span class="manaCost">
                         <img src="../../assets/search-results/card/mana-cost/3-small.jpg">
                         <img src="../../assets/card-colours/white.png">
                         <img src="../../assets/card-colours/white.png">
                         <img src="../../assets/card-colours/white.png">
                     </span>
-                        <span class="convertedManaCost">(6)</span>
-                        <span class="cardType">Creature - Angel (6/6)</span>
+                        <span class="convertedManaCost">({{card.cmc}})</span>
+                        <span class="cardType">{{card.type}}(6/6)</span>
                         <div class="rulesText">
-                            <p>Flying</p>
-                            <p>Landfall — Whenever a land enters the battlefield under your control, you may exile target nonland permanent other than Admonition Angel.</p>
-                            <p>When Admonition Angel leaves the battlefield, return all cards exiled with it to the battlefield under their owners' control.</p>
-                            </div>
+                            <p>{{card.originalText}}</p>
+                        </div>
                 </div>
 
             </td>
@@ -35,6 +33,13 @@
 </template>
 
 <script>
+export default {
+    props: {
+        cardsResponse: {
+            required: true
+        }
+    }
+}
 </script>
 
 <style lang="scss">

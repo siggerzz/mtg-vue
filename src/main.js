@@ -3,22 +3,25 @@ import VueRouter from 'vue-router';
 import App from '../App.vue';
 import HomePage from './views/Home.vue';
 import SearchResultsPage from './views/SearchResults.vue';
+import store from '../src/store/store';
 
 Vue.use(VueRouter);
 
 
 const routes = [
   { path: '/', component: HomePage },
-  { path: '/search-results', component: SearchResultsPage }
+  { path: '/search-results', component: SearchResultsPage}
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')

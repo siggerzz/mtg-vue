@@ -1,5 +1,6 @@
 ﻿using MagicApi.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace MagicApi.Services
             _httpclient = httpclient;
         }
 
-        public async Task<CardsResponse> GetCards(string name)
+        public async Task<List<Card>> GetCards(string name)
         {
             var request = "https://api.magicthegathering.io/v1/cards?name=" + name;
 
@@ -23,12 +24,29 @@ namespace MagicApi.Services
             if (response.IsSuccessStatusCode)
             {
                  var cardsResponse = await response.Content.ReadAsAsync<CardsResponse>();
-                return cardsResponse;
+
+                var filteredCards = FilterCards(cardsResponse);
+                return filteredCards;
             }
             else
             {
                 throw new System.Exception("Error making API call, please debug");
             }
         }
+
+        public List<Card> FilterCards(CardsResponse cardsResponse)
+        {
+            var filteredCards = new List<Card>();
+            
+            foreach(var card in cardsResponse.Cards)
+            {
+                if(card.multiverseid != 0)
+                {
+                    filteredCards.Add(card);
+                }
+            }
+            return filteredCards;
+        }
+
     }
 }

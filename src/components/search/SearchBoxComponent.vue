@@ -1,35 +1,29 @@
 <template>
 <div class="search-box">
     <form @submit.prevent="handleSubmit">
-        <input class="search-input" type="text" autocomplete="off" placeholder="Search terms...">
-        <input class="search-button" value="SEARCH" type="submit" @click.stop.prevent="fetch()">
+        <input class="search-input" type="text" autocomplete="off" v-model="searchTerm" placeholder="Search terms...">
+        <input class="search-button" value="SEARCH" type="submit" @click.stop.prevent="submit()">
     </form>
   </div>
 </template>
 
 <script>
-import { RepositoryFactory } from '../../api/repositories/RepositoryFactory';
-const CardsRepository = RepositoryFactory.get('cards');
-
 export default {
-    name: 'SearchBoxComponent',
-    data() {
-      return {
-        cards: []
-      };
-    },
-    methods: {
-      submit(){
-         //if you want to send any data into server before redirection then you can do it here
-        this.$router.push("/search-results");
-      },
-      async fetch () {
-        await CardsRepository.getCards("angel").then(response => {
-          this.cards = response.data
-        })
-      }
+  name: 'SearchBoxComponent',
+  data() {
+    return {
+      searchTerm: ''
+    };
+  },
+  methods: {
+    submit() {
+      this.$router.push({
+        path: "/search-results",
+        query: {
+          searchTerm: this.searchTerm
+        }});
+    }
   }
-    
 }
 </script>
 
