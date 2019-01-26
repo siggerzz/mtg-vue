@@ -1,5 +1,10 @@
 ﻿namespace MagicApi.Models
 {
+
+    public class CardRoot
+    {
+        public Card[] Cards { get; set; }
+    }
     public class Card
     {
         public string name { get; set; }

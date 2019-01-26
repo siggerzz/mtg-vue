@@ -1,14 +1,12 @@
 <template>
-  <div id="header">
     <div class="bannerBackground">
         <div class="bannerContainer">
-          <img class="bannerImage" alt="MTG Logo" src="../assets/header/topbanner.png">
+          <img class="bannerImage" alt="MTG Logo" src="../../assets/header/topbanner.png">
         </div>
         <a href="/">
-            <img src="../assets/mtg-logo.png">
+            <img src="../../assets/mtg-logo.png">
         </a>
     </div>
-  </div>
 </template>
 
 <script>
@@ -18,13 +16,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('../assets/background.jpg');
+  background-image: url('../../assets/background.jpg');
   text-align: center;
   color: #ffffff;
 }

@@ -43,9 +43,17 @@ export default {
 </script>
 
 <style lang="scss">
+
+tr:nth-child(odd) {
+    background-color: #3a3939;
+}
+
+tr:nth-child(even) {
+    background-color: #3d3d3d;
+}
+
 .standard-card-item td {
-    border-style:solid;
-    border-width: 1px;
+    border-style:none;
 }
 
 .middleCol {
@@ -77,7 +85,7 @@ export default {
 }
 
 .cardImage {
-    max-width: 150px;
+    max-width: 95px;
     height: auto;
 }
 

@@ -15,7 +15,7 @@ namespace MagicApi.Services
             _httpclient = httpclient;
         }
 
-        public async Task<List<Card>> GetCards(string name)
+        public async Task<IEnumerable<Card>> GetCards(string name)
         {
             var request = "https://api.magicthegathering.io/v1/cards?name=" + name;
 
@@ -23,9 +23,10 @@ namespace MagicApi.Services
 
             if (response.IsSuccessStatusCode)
             {
-                 var cardsResponse = await response.Content.ReadAsAsync<CardsResponse>();
+                 var cardsResponse = await response.Content.ReadAsAsync<CardRoot>();
 
-                var filteredCards = FilterCards(cardsResponse);
+                var filteredCards = cardsResponse.Cards.Where(c => c.multiverseid != 0);
+
                 return filteredCards;
             }
             else
@@ -33,20 +34,5 @@ namespace MagicApi.Services
                 throw new System.Exception("Error making API call, please debug");
             }
         }
-
-        public List<Card> FilterCards(CardsResponse cardsResponse)
-        {
-            var filteredCards = new List<Card>();
-            
-            foreach(var card in cardsResponse.Cards)
-            {
-                if(card.multiverseid != 0)
-                {
-                    filteredCards.Add(card);
-                }
-            }
-            return filteredCards;
-        }
-
     }
 }

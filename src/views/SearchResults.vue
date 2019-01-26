@@ -1,12 +1,17 @@
 <template>
+<div>
+  <div class="header">
+        <SearchHeaderComponent/>
+  </div>
   <div class="container">
-    <h1>Search Results</h1>
     <StandardCardsComponent :cardsResponse=this.cardsResponse></StandardCardsComponent>
   </div>
+</div>
 </template>
 
 <script>
 
+import SearchHeaderComponent from '../components/header/SearchHeaderComponent.vue';
 import StandardCardsComponent from '../components/cards/StandardCardsComponent.vue';
 import { RepositoryFactory } from '../api/repositories/RepositoryFactory';
 const CardsRepository = RepositoryFactory.get('cards');
@@ -19,7 +24,8 @@ export default {
     }
   },
   components: {
-    StandardCardsComponent
+    StandardCardsComponent,
+    SearchHeaderComponent
   },
   methods: {
     async fetchCards() {
@@ -34,5 +40,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+.container {
+  margin-top:200px;
+}
 </style>
