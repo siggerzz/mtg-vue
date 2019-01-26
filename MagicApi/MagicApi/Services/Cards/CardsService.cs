@@ -1,10 +1,10 @@
-﻿using MagicApi.Models;
+﻿using MagicApi.Models.Card;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MagicApi.Services
+namespace MagicApi.Services.Cards
 {
     public class CardsService : ICardsService
     {

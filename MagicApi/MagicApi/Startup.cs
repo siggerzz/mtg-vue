@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using MagicApi.Services;
+using MagicApi.Services.Cards;
+using MagicApi.Services.Set;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +29,7 @@ namespace MagicApi
         {
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         services.AddHttpClient<ICardsService, CardsService>();
+        services.AddHttpClient<ISetsService, SetsService>();
 
             services.AddCors(options =>
             {
