@@ -5,27 +5,27 @@
    </div>
    <label class="checkbox-container">
         <img src="../../assets/card-colours/white.png">
-        <input name="text" type="checkbox">
+        <input v-model="checkedColors" name="color" value="white" type="checkbox">
         <span class="checkmark"></span>
    </label>
         <label class="checkbox-container">
         <img src="../../assets/card-colours/blue.png">
-        <input name="text" type="checkbox">
+        <input v-model="checkedColors" name="color" value="blue" type="checkbox">
         <span class="checkmark"></span>
    </label>
    <label class="checkbox-container">
         <img src="../../assets/card-colours/black.png">
-        <input name="text" type="checkbox">
+        <input v-model="checkedColors" name="color" value="black" type="checkbox">
         <span class="checkmark"></span>
    </label>
    <label class="checkbox-container">
         <img src="../../assets/card-colours/red.png">
-        <input name="text" type="checkbox">
+        <input v-model="checkedColors" name="color" value="red" type="checkbox">
         <span class="checkmark"></span>
    </label>
    <label class="checkbox-container">
         <img src="../../assets/card-colours/green.png">
-        <input name="text" type="checkbox">
+        <input v-model="checkedColors" name="color" value="green" type="checkbox">
         <span class="checkmark"></span>
    </label>
    <label class="checkbox-container">Match Colors Exactly (use 'and' instead of 'or')
@@ -45,7 +45,12 @@
 
 <script>
 export default {
-    name: 'SearchColourComponent'
+    name: 'SearchColourComponent',
+    data() {
+        return {
+            checkedColors: []
+        }
+    }
 }
 </script>
 
