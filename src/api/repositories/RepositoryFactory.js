@@ -1,7 +1,9 @@
 import CardsRepository from '../cards/cardsRepository';
+import SetsRepository from '../sets/setsRepository';
 
 const repositories = {
-    cards: CardsRepository
+    cards: CardsRepository,
+    sets: SetsRepository
 }
 
 export const RepositoryFactory = {

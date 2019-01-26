@@ -30,7 +30,7 @@ export default {
   },
   created() {
     this.fetchCards();
-    }
+  }
 }
 </script>
 

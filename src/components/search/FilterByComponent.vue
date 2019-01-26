@@ -12,7 +12,7 @@
         <p>Card Set:</p>
         <select>
             <option value=""></option>
-            <option value="test">Test</option>
+            <option value="test" v-for="(set, index) in setsResponse.sets" :key=index>{{set.name}}</option>
         </select>
     </div>
         <div class="filter-select select-style">
@@ -40,8 +40,24 @@
 </template>
 
 <script>
+import { RepositoryFactory } from '../../api/repositories/RepositoryFactory';
+const SetsRepository = RepositoryFactory.get('sets');
+
 export default {
-    name:"FilterByComponent"
+    name:"FilterByComponent",
+    data() {
+        return {
+            setsResponse: {}
+        }
+    },
+    methods: {
+        async fetchSets() {
+        await SetsRepository.getSets().then(response => {
+        this.setsResponse = (response.data);
+    })}},
+    created() {
+    this.fetchSets();
+  }
 }
 </script>
 

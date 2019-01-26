@@ -1,4 +1,4 @@
-﻿namespace MagicApi.Models
+﻿namespace MagicApi.Models.Card
 {
     public class ForeignName
     {

@@ -1,4 +1,4 @@
-﻿using MagicApi.Services;
+﻿using MagicApi.Services.Cards;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
