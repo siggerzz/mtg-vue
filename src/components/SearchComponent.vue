@@ -2,7 +2,23 @@
 <div>
   <SearchBoxComponent/>
   <div class="search-by-container">
-      <SearchCardComponent class="search-card-component"/>
+    <div class="search-card">
+    <h3>Search Card:</h3>
+    <div>
+        <label class="checkbox-container">Name
+            <input name="name" type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkbox-container">Types
+            <input name="types" type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkbox-container">Text
+            <input name="text" type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+    </div>
+</div>
       <div class="search-colour">
    <div class="search-colour-header">
       <h3>Search by Colour:</h3>
@@ -90,15 +106,13 @@
 <script>
 import { RepositoryFactory } from '../api/repositories/RepositoryFactory';
 import SearchBoxComponent from './search/SearchBoxComponent.vue';
-import SearchCardComponent from './search/SearchCardComponent.vue';
 
 const SetsRepository = RepositoryFactory.get('sets');
 
 export default {
   name: 'SearchComponent',
   components: {
-    SearchBoxComponent,
-    SearchCardComponent
+    SearchBoxComponent
   },
   data() {
     return {
