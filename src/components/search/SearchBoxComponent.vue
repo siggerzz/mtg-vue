@@ -20,7 +20,8 @@ export default {
       this.$router.push({
         path: "/search-results",
         query: {
-          searchTerm: this.searchTerm
+          searchTerm: this.searchTerm,
+          colorIdentity: this.$store.getters.getSelectedColours.toString()
         }});
     }
   }

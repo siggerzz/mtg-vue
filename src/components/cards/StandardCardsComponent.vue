@@ -1,7 +1,7 @@
 <template>
 <table>
     <tbody>
-        <tr class="standard-card-item" v-for="(card, index) in cardsResponse" :key=index>
+        <tr class="standard-card-item" v-for="(card, index) in cards" :key=index>
             <td class="leftCol">
                 <a href="/card">
                     <img class="cardImage" :srcset="card.imageUrl"/>
@@ -33,12 +33,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-    props: {
-        cardsResponse: {
-            required: true
-        }
-    }
+    computed: {
+    // mix the getters into computed with object spread operator
+    ...mapGetters({
+      cards: 'getCardsResponse',
+      // ...
+    })
+  }
 }
 </script>
 

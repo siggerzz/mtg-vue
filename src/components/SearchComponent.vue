@@ -25,27 +25,27 @@
    </div>
    <label class="checkbox-container">
         <img src="../assets/card-colours/white.png">
-        <input v-model="checkedColors" name="color" value="white" type="checkbox">
+        <input v-model="selectedColours" name="color" value="W" type="checkbox">
         <span class="checkmark"></span>
    </label>
         <label class="checkbox-container">
         <img src="../assets/card-colours/blue.png">
-        <input v-model="checkedColors" name="color" value="blue" type="checkbox">
+        <input v-model="selectedColours" name="color" value="U" type="checkbox">
         <span class="checkmark"></span>
    </label>
    <label class="checkbox-container">
         <img src="../assets/card-colours/black.png">
-        <input v-model="checkedColors" name="color" value="black" type="checkbox">
+        <input v-model="selectedColours" name="color" value="B" type="checkbox">
         <span class="checkmark"></span>
    </label>
    <label class="checkbox-container">
         <img src="../assets/card-colours/red.png">
-        <input v-model="checkedColors" name="color" value="red" type="checkbox">
+        <input v-model="selectedColours" name="color" value="R" type="checkbox">
         <span class="checkmark"></span>
    </label>
    <label class="checkbox-container">
         <img src="../assets/card-colours/green.png">
-        <input v-model="checkedColors" name="color" value="green" type="checkbox">
+        <input v-model="selectedColours" name="color" value="G" type="checkbox">
         <span class="checkmark"></span>
    </label>
    <label class="checkbox-container">Match Colors Exactly (use 'and' instead of 'or')
@@ -106,6 +106,7 @@
 <script>
 import { RepositoryFactory } from '../api/repositories/RepositoryFactory';
 import SearchBoxComponent from './search/SearchBoxComponent.vue';
+import {mapGetters} from 'vuex';
 
 const SetsRepository = RepositoryFactory.get('sets');
 
@@ -116,7 +117,6 @@ export default {
   },
   data() {
     return {
-      checkedColors: [],
       setsResponse: {}
   }},
   methods: {
@@ -126,6 +126,16 @@ export default {
   })}},
   created() {
     this.fetchSets();
+  },
+  computed : {
+    selectedColours: {
+    get () {
+        return this.$store.getters.getSelectedColours;
+    },
+    set (value) {
+        this.$store.dispatch('setSelectedColours', value)
+    }
+}
   }
 }
 </script>
