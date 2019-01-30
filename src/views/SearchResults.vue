@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     async fetchCards() {
-    await CardsRepository.getCards(this.$route.query.searchTerm, this.$store.state.search.selectedColours.toString()).then(response => {
+    await CardsRepository.getCards(this.$route.query.searchTerm, this.$route.query.colorIdentity).then(response => {
     this.$store.dispatch('setCardsResponse', response.data);
     })
   },
