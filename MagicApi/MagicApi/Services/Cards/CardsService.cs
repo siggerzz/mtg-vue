@@ -1,4 +1,7 @@
 ﻿using MagicApi.Models.Card;
+using MagicApi.Services.Extensions;
+using MagicApi.ViewModels;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -15,7 +18,7 @@ namespace MagicApi.Services.Cards
             _httpclient = httpclient;
         }
 
-        public async Task<IEnumerable<Card>> GetCards(string name, string colorIdentity)
+        public async Task<IEnumerable<CardViewModel>> GetCards(string name, string colorIdentity)
         {
             var request = "https://api.magicthegathering.io/v1/cards?name=" + name + "&colorIdentity=" + colorIdentity;
 
@@ -27,7 +30,19 @@ namespace MagicApi.Services.Cards
 
                 var filteredCards = cardsResponse.Cards.Where(c => c.multiverseid != 0);
 
-                return filteredCards;
+                var dictionary = new ConcurrentDictionary<string, List<string>>();
+                foreach (var card in filteredCards)
+                {
+                    if (!dictionary.TryAdd(card.name, new List<string> { card.set }))
+                    {
+                        dictionary[card.name].Add(card.set);
+                    }
+                }
+                var cardsViewModel = filteredCards.Select(c => c.ToCardViewModel(dictionary[c.name]));
+
+                var distinctCardsViewModel = cardsViewModel.GroupBy(c => c.Name).Select(g => g.First());
+
+                return distinctCardsViewModel;
             }
             else
             {

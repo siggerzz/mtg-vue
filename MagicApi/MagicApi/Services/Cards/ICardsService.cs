@@ -1,5 +1,4 @@
-﻿using MagicApi.Models;
-using MagicApi.Models.Card;
+﻿using MagicApi.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,6 +6,6 @@ namespace MagicApi.Services.Cards
 {
     public interface ICardsService
     {
-        Task<IEnumerable<Card>> GetCards(string name, string colorIdentity);
+        Task<IEnumerable<CardViewModel>> GetCards(string name, string colorIdentity);
     }
 }

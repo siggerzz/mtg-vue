@@ -3,13 +3,13 @@
     <tbody>
         <tr class="standard-card-item" v-for="(card, index) in cards" :key=index>
             <td class="leftCol">
-                <a href="/card">
+                <a v-bind:href="`/card/CardDetails?multiverseId=${card.multiverseId}`">
                     <img class="cardImage" :srcset="card.imageUrl"/>
                     </a>
             </td>
             <td class="middleCol">
                 <div class="cardInfo">
-                    <span class="cardTitle" ><a href="/card">{{card.name}}</a></span>
+                    <span class="cardTitle" ><a v-bind:href="`/card/CardDetails?multiverseId=${card.multiverseId}`">{{card.name}}</a></span>
                     <span class="manaCost">
                         <img src="../../assets/search-results/card/mana-cost/3-small.jpg">
                         <img src="../../assets/card-colours/white.png">
@@ -25,7 +25,7 @@
 
             </td>
             <td class="rightCol">
-                <p>Right Col</p>
+                <img class="setImage" v-bind:src="`http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=${card.sets[0]}&size=small&rarity=${card.rarity.charAt(0)}`"/>
             </td>
         </tr>
     </tbody>
