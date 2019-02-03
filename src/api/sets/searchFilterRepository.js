@@ -1,8 +1,8 @@
 import Repository from '../repositories/repository';
 
-const resource = "/Sets/GetSets";
+const resource = "/SearchFilter/GetFilters";
 export default {
-    getSets() {
+    getFilters() {
         return Repository.get(`${resource}`);
     }
 }

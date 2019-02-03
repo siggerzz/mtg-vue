@@ -29,7 +29,7 @@ namespace MagicApi
         {
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         services.AddHttpClient<ICardsService, CardsService>();
-        services.AddHttpClient<ISetsService, SetsService>();
+        services.AddHttpClient<ISearchFilterService, SearchFilterService>();
 
             services.AddCors(options =>
             {

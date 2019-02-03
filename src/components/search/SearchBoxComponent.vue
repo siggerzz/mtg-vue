@@ -12,7 +12,10 @@ export default {
   name: 'SearchBoxComponent',
   data() {
     return {
-      searchTerm: ''
+      format: '',
+      searchTerm: '',
+      set: '',
+      type: '',
     };
   },
   methods: {
@@ -21,7 +24,11 @@ export default {
         path: "/search-results",
         query: {
           searchTerm: this.searchTerm,
-          colorIdentity: this.$store.getters.getSelectedColours.toString()
+          colorIdentity: this.$store.getters.getSelectedColours.toString(),
+          set: this.$store.getters.getSelectedSet.toString(),
+          format: this.$store.getters.getSelectedFormat.toString(),
+          type: this.$store.getters.getSelectedType.toString(),
+
         }});
     }
   }

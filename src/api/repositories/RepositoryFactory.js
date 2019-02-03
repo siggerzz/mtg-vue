@@ -1,9 +1,9 @@
 import CardsRepository from '../cards/cardsRepository';
-import SetsRepository from '../sets/setsRepository';
+import SearchFilterRepository from '../sets/searchFilterRepository';
 
 const repositories = {
     cards: CardsRepository,
-    sets: SetsRepository
+    searchFilters: SearchFilterRepository
 }
 
 export const RepositoryFactory = {

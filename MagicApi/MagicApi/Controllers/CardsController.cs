@@ -19,9 +19,10 @@ namespace MagicApi.Controllers
 
         [HttpGet]
         [Route("GetCards")]
-        public async Task<IActionResult> GetCards(string name, string colorIdentity)
+        public async Task<IActionResult> GetCards(string name, string colorIdentity, string set,
+        string format, string type)
         {
-            return Ok(await _cardsService.GetCards(name, colorIdentity));
+            return Ok(await _cardsService.GetCards(name, colorIdentity, set, format, type));
         }
     }
 }

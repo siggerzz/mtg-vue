@@ -6,6 +6,7 @@ namespace MagicApi.Services.Cards
 {
     public interface ICardsService
     {
-        Task<IEnumerable<CardViewModel>> GetCards(string name, string colorIdentity);
+        Task<IEnumerable<CardViewModel>> GetCards(string name, string colorIdentity, string set,
+        string format, string type);
     }
 }

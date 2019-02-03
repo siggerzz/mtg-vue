@@ -66,23 +66,23 @@
     <h3>Filter by:</h3>
     <div class="filter-select select-style">
         <p>Card Format:</p>
-        <select>
+        <select v-model="selectedFormat">
             <option value=""></option>
-            <option value="test">Test</option>
+            <option v-bind:value="format" v-for="(format, index) in filtersResponse.formats" :key=index>{{format}}</option>
         </select>
     </div>
         <div class="filter-select select-style">
         <p>Card Set:</p>
-        <select>
+        <select v-model="selectedSet">
             <option value=""></option>
-            <option value="test" v-for="(set, index) in setsResponse.sets" :key=index>{{set.name}}</option>
+            <option v-bind:value="set.code" v-for="(set, index) in filtersResponse.sets" :key=index>{{set.name}}</option>
         </select>
     </div>
         <div class="filter-select select-style">
         <p>Card Type:</p>
-        <select>
+        <select v-model="selectedType">
             <option value=""></option>
-            <option value="test">Test</option>
+            <option v-bind:value="type" v-for="(type, index) in filtersResponse.types" :key=index>{{type}}</option>
         </select>
     </div>
         <div class="filter-select select-style">
@@ -108,7 +108,7 @@ import { RepositoryFactory } from '../api/repositories/RepositoryFactory';
 import SearchBoxComponent from './search/SearchBoxComponent.vue';
 import {mapGetters} from 'vuex';
 
-const SetsRepository = RepositoryFactory.get('sets');
+const SearchFiltersRepository = RepositoryFactory.get('searchFilters');
 
 export default {
   name: 'SearchComponent',
@@ -117,15 +117,15 @@ export default {
   },
   data() {
     return {
-      setsResponse: {}
+      filtersResponse: {}
   }},
   methods: {
-      async fetchSets() {
-      await SetsRepository.getSets().then(response => {
-      this.setsResponse = (response.data);
+      async fetchFilters() {
+      await SearchFiltersRepository.getFilters().then(response => {
+      this.filtersResponse = (response.data);
   })}},
   created() {
-    this.fetchSets();
+    this.fetchFilters();
   },
   computed : {
     selectedColours: {
@@ -135,7 +135,31 @@ export default {
     set (value) {
         this.$store.dispatch('setSelectedColours', value)
     }
-}
+},
+    selectedSet: {
+    get () {
+        return this.$store.getters.getSelectedSet;
+    },
+    set (value) {
+        this.$store.dispatch('setSelectedSet', value)
+    }
+},
+    selectedFormat: {
+    get () {
+        return this.$store.getters.getSelectedFormat;
+    },
+    set (value) {
+        this.$store.dispatch('setSelectedFormat', value)
+    }
+},
+    selectedType: {
+    get () {
+        return this.$store.getters.getSelectedType;
+    },
+    set (value) {
+        this.$store.dispatch('setSelectedType', value)
+    }
+},
   }
 }
 </script>

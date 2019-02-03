@@ -18,9 +18,9 @@ namespace MagicApi.Services.Cards
             _httpclient = httpclient;
         }
 
-        public async Task<IEnumerable<CardViewModel>> GetCards(string name, string colorIdentity)
+        public async Task<IEnumerable<CardViewModel>> GetCards(string name, string colorIdentity, string set, string format, string type)
         {
-            var request = "https://api.magicthegathering.io/v1/cards?name=" + name + "&colorIdentity=" + colorIdentity;
+            var request = "https://api.magicthegathering.io/v1/cards?name=" + name + "&colorIdentity=" + colorIdentity + "&set=" + set + "&gameFormat=" + format + "&type=" + type;
 
             var response = await _httpclient.GetAsync(request);
 
