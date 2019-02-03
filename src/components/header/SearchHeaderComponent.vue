@@ -16,7 +16,6 @@
             </div>
           </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -53,6 +52,9 @@ body {
 
 @media only screen and (max-width: 750px) {
 
+  .bannerBackground a img {
+    width:300px;
+  }
 }
 @media screen and (min-width: 750px){
   .bannerBackground {
@@ -60,7 +62,6 @@ body {
   }
 .bannerContainer {
     width: 870px;
-    padding-top: 20px;
     margin: 0 auto;
 }
 .logoContainer {

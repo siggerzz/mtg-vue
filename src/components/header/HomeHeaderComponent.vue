@@ -37,10 +37,6 @@ body {
     width: 275px;
 }
 
-.bannerBackground a img {
-    width: 100%;
-}
-
 
 
 @media only screen and (max-width: 750px) {
@@ -57,5 +53,18 @@ body {
   .bannerBackground {
     background-color: #191919;
   }
+  .bannerBackground a img {
+    width: 100%;
+}
+.bannerBackground a {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 475px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 275px;
+}
+
 }
 </style>
