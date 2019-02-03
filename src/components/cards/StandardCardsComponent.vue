@@ -3,13 +3,13 @@
     <tbody>
         <tr class="standard-card-item" v-for="(card, index) in cards" :key=index>
             <td class="leftCol">
-                <a v-bind:href="`/card/CardDetails?multiverseId=${card.multiverseId}`">
+                <a v-bind:href="`/CardDetails?multiverseId=${card.multiverseId}`">
                     <img class="cardImage" :srcset="card.imageUrl"/>
                     </a>
             </td>
             <td class="middleCol">
                 <div class="cardInfo">
-                    <span class="cardTitle" ><a v-bind:href="`/card/CardDetails?multiverseId=${card.multiverseId}`">{{card.name}}</a></span>
+                    <span class="cardTitle" ><a v-bind:href="`/CardDetails?multiverseId=${card.multiverseId}`">{{card.name}}</a></span>
                     <span class="manaCost">
                         <img src="../../assets/search-results/card/mana-cost/3-small.jpg">
                         <img src="../../assets/card-colours/white.png">
