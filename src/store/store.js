@@ -5,6 +5,7 @@ Vue.use(Vuex)
 const state = {
   search: {
   cards: {},
+  card: {},
   selectedColours: [],
   selectedSet: '',
   selectedFormat: '',
@@ -20,6 +21,10 @@ const mutations = {
   setCards(state, cardsResponse)
   {
     state.search.cards = cardsResponse;
+  },
+  setCard(state, cardResponse)
+  {
+    state.search.card = cardResponse;
   },
   setSet(state, set)
   {
@@ -42,6 +47,9 @@ const actions = {
   setCardsResponse(context, cardsResponse) {
     context.commit('setCards', cardsResponse);
   },
+  setCardResponse(context, cardResponse) {
+    context.commit('setCard', cardResponse);
+  },
   setSelectedSet(context, selectedSet) {
     context.commit('setSet', selectedSet);
   },
@@ -59,6 +67,9 @@ const getters = {
   },
   getCardsResponse: state => {
     return state.search.cards;
+  },
+  getCardResponse: state => {
+    return state.search.card;
   },
   getSelectedSet: state => {
     return state.search.selectedSet;

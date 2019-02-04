@@ -1,10 +1,5 @@
 ﻿namespace MagicApi.Models.Card
 {
-
-    public class CardRoot
-    {
-        public Card[] Cards { get; set; }
-    }
     public class Card
     {
         public string name { get; set; }
@@ -32,5 +27,7 @@
         public string originalText { get; set; }
         public string originalType { get; set; }
         public string id { get; set; }
+        public string flavor { get; set; } 
+        public string setname { get; set; }
     }
 }

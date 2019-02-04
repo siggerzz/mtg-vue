@@ -26,7 +26,7 @@ namespace MagicApi.Services.Cards
 
             if (response.IsSuccessStatusCode)
             {
-                 var cardsResponse = await response.Content.ReadAsAsync<CardRoot>();
+                 var cardsResponse = await response.Content.ReadAsAsync<CardsRoot>();
 
                 var filteredCards = cardsResponse.Cards.Where(c => c.multiverseid != 0);
 
@@ -43,6 +43,38 @@ namespace MagicApi.Services.Cards
                 var distinctCardsViewModel = cardsViewModel.GroupBy(c => c.Name).Select(g => g.First());
 
                 return distinctCardsViewModel;
+            }
+            else
+            {
+                throw new System.Exception("Error making API call, please debug");
+            }
+        }
+
+        public async Task<CardViewModel> GetCard(string multiverseid)
+        {
+            var request = "https://api.magicthegathering.io/v1/cards/" + multiverseid;
+
+            var response = await _httpclient.GetAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var cardResponse = await response.Content.ReadAsAsync<CardRoot>();
+
+                return new CardViewModel
+                {
+                    Name = cardResponse.Card.name,
+                    ManaCost = cardResponse.Card.manaCost,
+                    Cmc = cardResponse.Card.cmc,
+                    Types = cardResponse.Card.types,
+                    Text = cardResponse.Card.text,
+                    Flavor = cardResponse.Card.flavor,
+                    Rarity = cardResponse.Card.rarity,
+                    Number = cardResponse.Card.number,
+                    Artist = cardResponse.Card.artist,
+                    SetName = cardResponse.Card.setname,
+                    MultiverseId = cardResponse.Card.multiverseid,
+                    ImageUrl = cardResponse.Card.imageUrl
+                };
             }
             else
             {

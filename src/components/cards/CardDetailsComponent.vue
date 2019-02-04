@@ -1,13 +1,13 @@
 <template>
     <div class="cardDetailsContainer">
         <div class="titleContainer">
-            <h2>Adarkar Valkyrie</h2>
+            <h2>{{this.$store.state.search.card.name}}</h2>
         </div>
         <div class="cardContent">
             <div class="leftColumn">
                 <div class="cardImageContainer">
                     <img id="cardCircle" src="../../assets/card/cardCircles.png"/>
-                    <img id="cardImage" src="../../assets/card/Image.jpg"/>
+                    <img id="cardImage" v-bind:src="`${this.$store.state.search.card.imageUrl}`"/>
                 </div>
             </div>
             <div class="rightColumn">
@@ -17,35 +17,27 @@
                 </div>
                 <div class="nameRow row">
                     <div class="label">Name</div>
-                    <div class="value">Adarkar Valkyrie</div>
+                    <div class="value">{{this.$store.state.search.card.name}}</div>
                 </div>
                 <div class="manaCostRow row">
                     <div class="label">Mana Cost</div>
-                    <div class="value">{R}{R}{W} 3</div>
+                    <div class="value">{{this.$store.state.search.card.manaCost}}</div>
                 </div>
                 <div class="cmcRow row">
                     <div class="label">Converted Mana Cost</div>
-                    <div class="value">6</div>
+                    <div class="value">{{this.$store.state.search.card.cmc}}</div>
                 </div>
                 <div class="typesRow row">
                     <div class="label">Types</div>
-                    <div class="value">Flying, vigilance</div>
+                    <div class="value">{{this.$store.state.search.card.types}}</div>
                 </div>
                 <div class="cardTextRow row">
                     <div class="label">Card Text</div>
-                    <div class="value">
-                        Flying, vigilance When target creature other than Adarkar Valkyrie dies this turn, return that card to the battlefield under your control.
-                    </div>
+                    <div class="value">{{this.$store.state.search.card.text}}</div>
                 </div>
                 <div class="flavourTextRow row">
                     <div class="label">Flavour Text</div>
-                    <div class="value">
-                        She doesn't escort the dead to the afterlife, but instead raises them to fight and die again.
-                    </div>
-                </div>
-                <div class="powertoughnessRow row">
-                    <div class="label">P/T</div>
-                    <div class="value">4/6</div>
+                    <div class="value">{{this.$store.state.search.card.flavor}}</div>
                 </div>
                 <div class="expansionRow row">
                     <div class="label">Expansion</div>
@@ -53,7 +45,7 @@
                 </div>
                 <div class="rarityRow row">
                     <div class="label">Rarity</div>
-                    <div class="value">Rare</div>
+                    <div class="value">{{this.$store.state.search.card.rarity}}</div>
                 </div>
                 <div class="allSetsRow row">
                     <div class="label">Sets</div>
@@ -61,11 +53,11 @@
                 </div>
                 <div class="cardNumberRow row">
                     <div class="label">Card Number</div>
-                    <div class="value">60</div>
+                    <div class="value">{{this.$store.state.search.card.number}}</div>
                 </div>
                 <div class="artistRow row">
-                    <div class="label">Name</div>
-                    <div class="value">John Smith</div>
+                    <div class="label">Artist</div>
+                    <div class="value">{{this.$store.state.search.card.artist}}</div>
                 </div>
             </div>
         </div>
@@ -73,8 +65,24 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+import { RepositoryFactory } from '../../api/repositories/RepositoryFactory';
+const CardsRepository = RepositoryFactory.get('cards');
 export default {
-    name:'CardDetails'
+    name:'CardDetails',
+    methods: {
+    async fetchCard() {
+    await CardsRepository.getCard(this.$route.query.multiverseId).then(response => {
+    this.$store.dispatch('setCardResponse', response.data);
+    })
+    }
+},
+  ...mapActions( {
+    setCardResponse: 'setCardResponse'
+  }),
+    created() {
+    this.fetchCard();
+  }
 }
 </script>
 
@@ -85,6 +93,24 @@ export default {
 }
 
 @media only screen and (min-width: 750px) {
+
+    .header {
+        margin-bottom:21px;
+    }
+
+    .cardDetailsContainer {
+        width:700px;
+    }
+    .cardDetailsContainer {
+        .titleContainer {
+            height:102px;
+
+            h2 {
+                font-family: "beleren bold";
+                font-size: 24pt;
+            }
+        }
+    }
     .leftColumn {
         display: inline-block;
         vertical-align: top;
@@ -109,7 +135,7 @@ export default {
     .rightColumn {
         display: inline-block;
         width: 337px;
-        height:523px;
+        height:500px;
         padding: 0px;
         background-color: #1f1e1e;
         
@@ -133,8 +159,9 @@ export default {
             .label {
                 display: inline-block;
                 width:130px;
-                font-family: 'open_sansbold';
-                font-weight: bold;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 700;
+                font-style: normal;
                 text-align: left;
                 font-size: .7em;
                 vertical-align: top;
@@ -144,7 +171,7 @@ export default {
                 display: inline-block;
                 width: 190px;
                 text-align: left;
-                font-family: 'open_sansregular';
+                font-family: 'Open Sans', sans-serif;
                 font-size: .85em;
             }
         }

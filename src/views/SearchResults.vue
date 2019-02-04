@@ -11,11 +11,11 @@
 
 <script>
 
+import { mapActions } from 'vuex'
 import SearchHeaderComponent from '../components/header/SearchHeaderComponent.vue';
 import StandardCardsComponent from '../components/cards/StandardCardsComponent.vue';
 import { RepositoryFactory } from '../api/repositories/RepositoryFactory';
 const CardsRepository = RepositoryFactory.get('cards');
-import { mapActions } from 'vuex'
 
 export default {
   name: 'SearchResultsPage',
