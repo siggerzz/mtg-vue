@@ -6,7 +6,7 @@ namespace MagicApi.ViewModels
     public class CardViewModel
     {
         public string Name { get; set; }
-        public string ManaCost { get; set; }
+        public IList<string> ManaCost { get; set; }
         public double Cmc { get; set; }
         public string[] Types { get; set; }
         public string Text { get; set; }

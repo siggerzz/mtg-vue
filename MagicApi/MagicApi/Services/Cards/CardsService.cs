@@ -26,19 +26,21 @@ namespace MagicApi.Services.Cards
 
             if (response.IsSuccessStatusCode)
             {
-                 var cardsResponse = await response.Content.ReadAsAsync<CardsRoot>();
-
+                var cardsResponse = await response.Content.ReadAsAsync<CardsRoot>();
                 var filteredCards = cardsResponse.Cards.Where(c => c.multiverseid != 0);
+                List<string> manaCostList = new List<string>();
 
-                var dictionary = new ConcurrentDictionary<string, List<string>>();
+
+                var setsDictionary = new ConcurrentDictionary<string, List<string>>();
                 foreach (var card in filteredCards)
                 {
-                    if (!dictionary.TryAdd(card.name, new List<string> { card.set }))
+                    if (!setsDictionary.TryAdd(card.name, new List<string> { card.set }))
                     {
-                        dictionary[card.name].Add(card.set);
+                        setsDictionary[card.name].Add(card.set);
                     }
                 }
-                var cardsViewModel = filteredCards.Select(c => c.ToCardViewModel(dictionary[c.name]));
+
+                var cardsViewModel = filteredCards.Select(c => c.ToCardViewModel(setsDictionary[c.name]));
 
                 var distinctCardsViewModel = cardsViewModel.GroupBy(c => c.Name).Select(g => g.First());
 
@@ -63,7 +65,7 @@ namespace MagicApi.Services.Cards
                 return new CardViewModel
                 {
                     Name = cardResponse.Card.name,
-                    ManaCost = cardResponse.Card.manaCost,
+                    ManaCost = cardResponse.Card.FormatManaCost(),
                     Cmc = cardResponse.Card.cmc,
                     Types = cardResponse.Card.types,
                     Text = cardResponse.Card.text,

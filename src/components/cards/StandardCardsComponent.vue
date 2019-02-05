@@ -11,10 +11,7 @@
                 <div class="cardInfo">
                     <span class="cardTitle" ><a v-bind:href="`/CardDetails?multiverseId=${card.multiverseId}`">{{card.name}}</a></span>
                     <span class="manaCost">
-                        <img src="../../assets/search-results/card/mana-cost/3-small.jpg">
-                        <img src="../../assets/card-colours/white.png">
-                        <img src="../../assets/card-colours/white.png">
-                        <img src="../../assets/card-colours/white.png">
+                        <img v-for="(mana, index) in card.manaCost" :key=index v-bind:src="`http://gatherer.wizards.com/Handlers/Image.ashx?size=small&name=${mana}&type=symbol`">
                     </span>
                         <span class="convertedManaCost">({{card.cmc}})</span>
                         <span class="cardType">{{card.type}}(6/6)</span>

@@ -7,6 +7,9 @@ const state = {
   cards: {},
   card: {},
   selectedColours: [],
+  cardNameSelected : false,
+  cardTypesSelected: false,
+  cardTextSelected: false,
   selectedSet: '',
   selectedFormat: '',
   selectedType:''
@@ -21,6 +24,18 @@ const mutations = {
   setCards(state, cardsResponse)
   {
     state.search.cards = cardsResponse;
+  },
+  setCardNameSelected(state, cardNameSelectedValue)
+  {
+    state.search.cardNameSelected = cardNameSelectedValue;
+  },
+  setCardTypesSelected(state, cardTypesSelectedValue)
+  {
+    state.search.cardTypesSelected = cardTypesSelectedValue;
+  },
+  setCardTextSelected(state, cardTextSelectedValue)
+  {
+    state.search.cardTextSelected = cardTextSelectedValue;
   },
   setCard(state, cardResponse)
   {
@@ -43,6 +58,15 @@ const mutations = {
 const actions = {
   setSelectedColours(context, selectedColours) {
     context.commit('setSelectedColours', selectedColours);
+  },
+  setCardNameSelectedValue(context, cardNameSelectedValue) {
+    context.commit('setCardNameSelected', cardNameSelectedValue);
+  },
+  setCardTypesSelectedValue(context, cardTypesSelectedValue) {
+    context.commit('setCardTypesSelected', cardTypesSelectedValue);
+  },
+  setCardTextSelectedValue(context, cardTextSelectedValue) {
+    context.commit('setCardTextSelected', cardTextSelectedValue);
   },
   setCardsResponse(context, cardsResponse) {
     context.commit('setCards', cardsResponse);
@@ -79,6 +103,15 @@ const getters = {
   },
   getSelectedType: state => {
     return state.search.selectedType;
+  },
+  getSelectedNameValue: state => {
+    return state.search.cardNameSelected;
+  },
+  getSelectedTypesValue: state => {
+    return state.search.cardTypesSelected;
+  },
+  getSelectedText: state => {
+    return state.search.cardTextSelected;
   }
 }
 

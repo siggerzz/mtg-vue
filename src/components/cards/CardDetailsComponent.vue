@@ -21,7 +21,9 @@
                 </div>
                 <div class="manaCostRow row">
                     <div class="label">Mana Cost</div>
-                    <div class="value">{{this.$store.state.search.card.manaCost}}</div>
+                    <div class="value">
+                    <img v-for="(mana, index) in this.$store.state.search.card.manaCost" :key=index v-bind:src="`http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=${mana}&type=symbol`">
+                    </div>
                 </div>
                 <div class="cmcRow row">
                     <div class="label">Converted Mana Cost</div>

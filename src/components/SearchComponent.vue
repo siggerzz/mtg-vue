@@ -6,15 +6,15 @@
     <h3>Search Card:</h3>
     <div>
         <label class="checkbox-container">Name
-            <input name="name" type="checkbox">
+            <input v-model="cardNameSelected" name="name" value="name" type="checkbox">
             <span class="checkmark"></span>
         </label>
         <label class="checkbox-container">Types
-            <input name="types" type="checkbox">
+            <input v-model="cardTypesSelected" name="types" value="types" type="checkbox">
             <span class="checkmark"></span>
         </label>
         <label class="checkbox-container">Text
-            <input name="text" type="checkbox">
+            <input v-model="cardTextSelected" name="text" value="text" type="checkbox">
             <span class="checkmark"></span>
         </label>
     </div>
@@ -160,6 +160,30 @@ export default {
         this.$store.dispatch('setSelectedType', value)
     }
 },
+    cardNameSelected: {
+    get () {
+        return this.$store.getters.getSelectedNameValue;
+    },
+    set (value) {
+        this.$store.dispatch('setCardNameSelectedValue', value)
+    }
+},
+    cardTypesSelected: {
+    get () {
+        return this.$store.getters.getSelectedTypesValue;
+    },
+    set (value) {
+        this.$store.dispatch('setCardTypesSelectedValue', value)
+    }
+},
+    cardTextSelected: {
+    get () {
+        return this.$store.getters.getSelectedTextValue;
+    },
+    set (value) {
+        this.$store.dispatch('setCardTextSelectedValue', value)
+    }
+}
   }
 }
 </script>
